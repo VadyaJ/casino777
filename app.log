@@ -1,0 +1,9 @@
+2025-02-14 17:53:52,348 - INFO - Root endpoint accessed
+2025-02-14 17:54:12,584 - INFO - Attempting to create user: testuser
+2025-02-14 17:54:12,592 - INFO - User testuser created successfully
+2025-02-14 17:54:12,593 - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\Asus\PycharmProjects\casino777\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'

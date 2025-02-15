@@ -1,18 +1,57 @@
-from pydantic import BaseModel, Field, EmailStr
+from pydantic import BaseModel, EmailStr
+from typing import List
 
 class UserBase(BaseModel):
-    username: str = Field(..., min_length=3, max_length=50, example="testuser")
-    email: EmailStr = Field(..., example="test@example.com")
+    username: str
+    email: EmailStr
 
 class UserCreate(UserBase):
-    password: str = Field(..., min_length=6, max_length=50, example="strongpassword")
+    password: str
+
+class UserLogin(BaseModel):
+    username: str
+    password: str
+
+class UserUpdate(BaseModel):
+    balance: float = None
+    is_admin: bool = None
 
 class User(UserBase):
     id: int
     balance: float
+    is_admin: bool
 
     class Config:
-        orm_mode = True
+        from_attributes = True
+
+class GameBase(BaseModel):
+    name: str
+    description: str
+
+class GameCreate(GameBase):
+    pass
+
+class Game(GameBase):
+    id: int
+
+    class Config:
+        from_attributes = True
+
+class BlackjackGameBase(BaseModel):
+    bet_amount: float
+    user_cards: List[str] = []
+    dealer_cards: List[str] = []
+    status: str = "in_progress"
+
+class BlackjackGameCreate(BlackjackGameBase):
+    pass
+
+class BlackjackGame(BlackjackGameBase):
+    id: int
+    user_id: int
+
+    class Config:
+        from_attributes = True
 
 class Token(BaseModel):
     access_token: str

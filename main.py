@@ -26,4 +26,4 @@ app.include_router(games.router)
 @app.get("/")
 def read_root():
     logger.info("Root endpoint accessed")
-    return {"message": "Welcome to the Casino API"}
+    return {"message": "Welcome to the Casino 777"}

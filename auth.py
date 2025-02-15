@@ -5,12 +5,12 @@ from fastapi import Depends, HTTPException, status
 from sqlalchemy.orm import Session
 import crud
 import schemas
-from database import get_db  # Импортируем get_db
+from database import get_db
 import logging
 
 logger = logging.getLogger(__name__)
 
-SECRET_KEY = "131020"
+SECRET_KEY = "your-secret-key"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
